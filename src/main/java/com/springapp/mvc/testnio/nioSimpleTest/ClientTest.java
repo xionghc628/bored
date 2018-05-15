@@ -40,7 +40,7 @@ public class ClientTest {
     public void connectServer() throws IOException{
         while(true  ){
             int keys = selector.select() ;
-            System.out.println("¼ì²âµ½¶¯Ì¬...");
+            System.out.println("æ£€æµ‹åˆ°åŠ¨æ€...");
             if(keys > 0){
                 Iterator<SelectionKey> itKeys =
                         selector.selectedKeys().iterator() ;
@@ -62,7 +62,7 @@ public class ClientTest {
         buf.clear() ;
         socketChannel.read(buf) ;
         buf.flip();
-        System.out.println("·şÎñ¶Ë·µ»ØÊı¾İ£º" + new String(buf.array() ,
+        System.out.println("æœåŠ¡ç«¯è¿”å›æ•°æ®ï¼š" + new String(buf.array() ,
                 0 , buf.limit() , "UTF-8"));
     }
 
