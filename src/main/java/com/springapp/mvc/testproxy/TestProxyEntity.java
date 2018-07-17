@@ -44,6 +44,8 @@ public class TestProxyEntity implements InvocationHandler {
      * @return ???????
      */
     public Object getProxy() {
+        Class cla = target.getClass();
+        Class[] c = cla.getInterfaces();
         return Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
                 target.getClass().getInterfaces(), this);
     }

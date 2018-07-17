@@ -26,15 +26,16 @@ public class TestSemaphore {
 
     public String get() throws Exception{
         consumer.acquire();
+        String str =  dataList.poll();
         producter.release();
-        return dataList.poll();
+        return str;
     }
 
 
     public void put(String data) throws Exception{
-        consumer.release();
         producter.acquire();
         dataList.offer(data);
+        consumer.release();
     }
 
     public static void main(String[] args) throws Exception{
@@ -56,8 +57,6 @@ public class TestSemaphore {
             }
         }).start();
 
-        Thread.sleep(2000L);
-
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -66,7 +65,6 @@ public class TestSemaphore {
                     while (true){
                         testSemaphore.put("sss"+count);
                         System.out.println("生产：sss"+count);
-                        Thread.sleep(2000L);
                         count++;
                     }
                 } catch (Exception e) {
@@ -74,6 +72,5 @@ public class TestSemaphore {
                 }
             }
         }).start();
-        Thread.sleep(100000L);
     }
 }
