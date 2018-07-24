@@ -5,15 +5,15 @@ public class TestSingle {
     private static TestSingle singles;
 
 
-    public TestSingle() {
+    private TestSingle() {
 
     }
 
-    public TestSingle getSingle(){
+    public static TestSingle getSingle(){
         if(singles!=null){
             return singles;
         } else {
-            synchronized (this){
+            synchronized (TestSingle.class){
                 if(singles == null){
                     singles = new TestSingle();
                 }
