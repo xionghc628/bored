@@ -2,7 +2,7 @@ package com.springapp.mvc.testjava;
 
 public class TestSingle {
 
-    private static TestSingle singles;
+    private volatile static TestSingle singles;
 
 
     private TestSingle() {
